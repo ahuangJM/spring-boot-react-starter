@@ -1,0 +1,23 @@
+---
+
+spring:
+  config:
+    activate:
+      on-profile: local
+    import: application-local.yml
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: env-qa
+    import: application-qa.yml
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: env-prod
+    import: application-prod.yml
