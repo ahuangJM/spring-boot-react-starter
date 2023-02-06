@@ -1,11 +1,11 @@
 module.exports = {
     env: {
         test: {
-            sourceMaps: 'both'
+            sourceMaps: 'both',
         },
         production: {
-            plugins: ['transform-react-remove-prop-types']
-        }
+            plugins: ['transform-react-remove-prop-types'],
+        },
     },
-    presets: ['@babel/preset-env', '@babel/preset-react']
+    presets: ['@babel/preset-env', '@babel/preset-react'],
 };

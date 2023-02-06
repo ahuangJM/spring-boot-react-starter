@@ -1,7 +1,7 @@
 /* eslint-env node */
 const path = require('path');
 
-module.exports = require()({
+module.exports = {
     module: {
         rules: [
             {
@@ -15,33 +15,30 @@ module.exports = require()({
                     'sass-loader',
                 ],
             },
+            {
+                test: /\.tsx?$/,
+                loader: 'babel-loader',
+                exclude: /node_modules/,
+                options: {
+                    presets: [
+                        '@babel/preset-env',
+                        '@babel/preset-react',
+                        '@babel/preset-typescript',
+                    ],
+                },
+            },
         ],
     },
-    app: {
-        files: {
-            app: ['js/app.tsx'],
-        },
-    },
+    entry: './src/index.tsx',
     devServer: {
         https: false,
     },
     output: {
         publicPath: (function () {
-            const { NODE_ENV, PORT = 3001, WEBPACK_LOCALHOST } = process.env;
-
-            if (NODE_ENV === 'production') {
-                return '/';
-            }
-
-            // Use localhost when running on mac or when flag is set explicitly
-            var isMac = process.platform === 'darwin';
-            if (WEBPACK_LOCALHOST == 1 || (isMac && WEBPACK_LOCALHOST != 0)) {
-                return `//localhost:${PORT}/`;
-            }
-
+            const { PORT = 3001 } = process.env;
             return `//localhost:${PORT}/`;
         })(),
-        path: path.join(__dirname, '../../../build/gen/npm/web-build/partner'),
+        path: path.join(__dirname, '../../../build/gen/npm/web-build'),
     },
     resolve: {
         alias: {
@@ -53,7 +50,5 @@ module.exports = require()({
         },
         extensions: ['.ts', '.tsx', '.js'],
     },
-    typescript: {
-        enabled: true,
-    },
-});
+    mode: 'development',
+};
