@@ -32,12 +32,14 @@ module.exports = {
     entry: './src/index.tsx',
     devServer: {
         https: false,
+        static: {
+            directory: path.resolve(__dirname, '../../../build/gen/npm/web-build'),
+        },
+        compress: true,
+        port: 3001,
     },
     output: {
-        publicPath: (function () {
-            const { PORT = 3001 } = process.env;
-            return `//localhost:${PORT}/`;
-        })(),
+        clean: true,
         path: path.join(__dirname, '../../../build/gen/npm/web-build'),
     },
     resolve: {

@@ -26,11 +26,12 @@
   "devDependencies": {
     "prettier": "^2.8.3",
     "webpack": "^5.70.0",
-    "webpack-cli": "^5.0.1"
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.0.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "webpack",
+    "start": "npx webpack && npx webpack serve",
+    "build": "npx webpack",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
