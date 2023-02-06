@@ -1,5 +1,8 @@
----
+spring:
+  mustache:
+    suffix: .html
 
+---
 spring:
   config:
     activate:
